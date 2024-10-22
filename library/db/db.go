@@ -23,7 +23,7 @@ func init() {
 	dbCluster := config.DB_CLUSTER
 	dbName := config.DB_NAME
 
-	connectionURI = fmt.Sprintf("mongodb+srv://%s:%s@electromate.%s.mongodb.net/?retryWrites=true&w=majority&appName=%s", dbUser, dbPass, dbCluster, dbName)
+	connectionURI = fmt.Sprintf("mongodb+srv://%s:%s@%s.mongodb.net/?retryWrites=true&w=majority&appName=%s", dbUser, dbPass, dbCluster, dbName)
 }
 
 func Connect() {

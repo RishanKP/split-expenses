@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "902b31c7-4a9b-41ae-b9c7-97d7580ae0a7",
+		"name": "split-expenses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11201011"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\":\"Rishan\",\n    \"lastName\":\"KP\",\n    \"email\":\"rishan@gmail.com\",\n    \"password\":\"rish123\",\n    \"contact\":\"9995444222\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"rishan@gmail.com\",\n    \"password\":\"rish123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/6717d671406f97051b9cc3fe",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"6717d671406f97051b9cc3fe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "expenses",
+			"item": [
+				{
+					"name": "create new expense (EQUAL)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3MDI1ODksImlhdCI6MTcyOTYxNjE4OSwicm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NzE3ZDY3MTQwNmY5NzA1MWI5Y2MzZmUiLCJ1c2VybmFtZSI6InJpc2hhbkBnbWFpbC5jb20ifQ.8kxdEWRtjjV12nhBpxtxylluPQP47Yu5rJwPI5MB_Q8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 150.00,\n    \"splitType\": \"EQUAL\", \n    \"description\": \"Dinner with friends\",\n    \"participants\": [\n        {\n            \"user_id\": \"6717d671406f97051b9cc3fe\"\n        },\n        {\n            \"user_id\": \"6717d72f406f97051b9cc3ff\"\n        },\n        {\n            \"user_id\": \"6717d741406f97051b9cc401\"Z\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/expense",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"expense"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new expense (EXACT)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3MDI1ODksImlhdCI6MTcyOTYxNjE4OSwicm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NzE3ZDY3MTQwNmY5NzA1MWI5Y2MzZmUiLCJ1c2VybmFtZSI6InJpc2hhbkBnbWFpbC5jb20ifQ.8kxdEWRtjjV12nhBpxtxylluPQP47Yu5rJwPI5MB_Q8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 150.00,\n    \"splitType\": \"EXACT\", \n    \"description\": \"Dinner with friends\",\n    \"participants\": [\n        {\n            \"user_id\": \"6717d671406f97051b9cc3fe\",\n            \"amount\": 100.00\n        },\n        {\n            \"user_id\": \"6717d72f406f97051b9cc3ff\",\n            \"amount\": 50.00\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/expense",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"expense"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new expense (PERCENTAGE)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3MDI1ODksImlhdCI6MTcyOTYxNjE4OSwicm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NzE3ZDY3MTQwNmY5NzA1MWI5Y2MzZmUiLCJ1c2VybmFtZSI6InJpc2hhbkBnbWFpbC5jb20ifQ.8kxdEWRtjjV12nhBpxtxylluPQP47Yu5rJwPI5MB_Q8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 200.00,\n    \"splitType\": \"PERCENTAGE\", \n    \"description\": \"Dinner with friends\",\n    \"participants\": [\n        {\n            \"user_id\": \"6717d671406f97051b9cc3fe\",\n            \"percentage\": 20\n        },\n        {\n            \"user_id\": \"6717d72f406f97051b9cc3ff\",\n            \"percentage\": 40\n        },\n        {\n            \"user_id\": \"6717d741406f97051b9cc401\",\n            \"percentage\": 40\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/expense",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"expense"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get expenses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3MDI1ODksImlhdCI6MTcyOTYxNjE4OSwicm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NzE3ZDY3MTQwNmY5NzA1MWI5Y2MzZmUiLCJ1c2VybmFtZSI6InJpc2hhbkBnbWFpbC5jb20ifQ.8kxdEWRtjjV12nhBpxtxylluPQP47Yu5rJwPI5MB_Q8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/expense",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"expense"
+							]
+						},
+						"description": "requires authorization.will return all expenses that the logged in user is a part of"
+					},
+					"response": []
+				},
+				{
+					"name": "get expenses Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3MDI1ODksImlhdCI6MTcyOTYxNjE4OSwicm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NzE3ZDY3MTQwNmY5NzA1MWI5Y2MzZmUiLCJ1c2VybmFtZSI6InJpc2hhbkBnbWFpbC5jb20ifQ.8kxdEWRtjjV12nhBpxtxylluPQP47Yu5rJwPI5MB_Q8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/expense",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"expense"
+							]
+						},
+						"description": "requires authorization.will return all expenses that the logged in user is a part of"
+					},
+					"response": []
+				},
+				{
+					"name": "download balance sheet as csv",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3MDI1ODksImlhdCI6MTcyOTYxNjE4OSwicm9sZSI6InVzZXIiLCJ1c2VySWQiOiI2NzE3ZDY3MTQwNmY5NzA1MWI5Y2MzZmUiLCJ1c2VybmFtZSI6InJpc2hhbkBnbWFpbC5jb20ifQ.8kxdEWRtjjV12nhBpxtxylluPQP47Yu5rJwPI5MB_Q8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/expense/balance-sheet",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"expense",
+								"balance-sheet"
+							]
+						},
+						"description": "will return a csv content with all expenses that the logged in use is a part of"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

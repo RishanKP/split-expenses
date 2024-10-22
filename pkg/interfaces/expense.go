@@ -30,6 +30,17 @@ func (c CreateExpenseInput) AsExpense() (models.Expense, error) {
 		}
 	}
 
+	if c.SplitType == models.SPLIT_TYPE_EXACT {
+		totalAmount := 0.0
+		for i := range c.Participants {
+			totalAmount += c.Participants[i].Amount
+		}
+
+		if totalAmount != c.Amount {
+			return models.Expense{}, errors.New("split amount != total amount")
+		}
+	}
+
 	if c.SplitType == models.SPLIT_TYPE_EQUAL {
 		for i := range c.Participants {
 			c.Participants[i].Amount = c.Amount / float64(len(c.Participants))
@@ -39,6 +50,7 @@ func (c CreateExpenseInput) AsExpense() (models.Expense, error) {
 	return models.Expense{
 		Amount:       c.Amount,
 		Description:  c.Description,
+		SplitType:    c.SplitType,
 		Participants: c.Participants,
 	}, nil
 }
