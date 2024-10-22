@@ -13,6 +13,7 @@
     DB_CLUSTER=dbCluster
     DB_NAME=dbName
     PORT=8080
+    JWT_TOKEN=myToken
     ```
 
 
