@@ -6,6 +6,11 @@
    - Make sure you have Go installed on your machine. You can download it from [golang.org](https://golang.org/dl/).
    - Ensure that you have MongoDB installed and running. You can find installation instructions on the [MongoDB website](https://www.mongodb.com/try/download/community). You can use local instance or create an account in MongoDB Atlas, a cloud based MongoDB service.
 
+2. **Clone and run the application:**
+   ```bash
+   git clone https://github.com/RishanKP/split-expenses.git
+   cd split-expenses
+   ```
    - Setup your .env file
     ```
     DB_USER=dbUser
@@ -15,12 +20,8 @@
     PORT=8080
     JWT_TOKEN=myToken
     ```
-
-
-2. **Clone and run the application:**
+   - Install dependencies and run the application
    ```bash
-   git clone https://github.com/RishanKP/split-expenses.git
-   cd split-expenses
    go mod tidy
    go run main.go
     ```
